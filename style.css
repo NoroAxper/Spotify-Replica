@@ -1,0 +1,510 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: gray;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+body {
+    height: 100%;
+    background-color: black;
+}
+
+.container {
+    height: 100%;
+    grid-template:
+        "left  main"   calc(100% - 120px)
+        "audio audio" 120px /
+        350px   1fr;
+}
+
+.g {
+    display: grid;
+}
+
+.p {
+    padding-left: 40px;
+}
+
+/* Left Sidebar */
+.left {
+    grid-area: left;
+    grid-template-rows: 100px 180px 130px calc(100vh - 649px) 50px 80px;
+    overflow: hidden;
+    box-sizing: content-box;
+    position: fixed;
+}
+
+.left > div:nth-child(1) > img {
+    height: 60px;
+}
+
+.left > div:nth-child(1) {
+    padding: 15px 0px;
+}
+
+.logo {
+    position: relative;
+    top: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav label {
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+.playlist-list, .playlist > h2 {
+    overflow: scroll;
+    color: white;
+}
+
+.playlist-list ul {
+    overflow: scroll;
+    list-style: none;
+}
+
+.playlist-list li {
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+.submit, .newlist, form {
+    margin: 15px 0;
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    display: inline;
+    background-color: black;
+}
+
+form, .newlist {
+    font-size: 24px;
+    border: none;
+}
+
+.install-app {
+    margin-left: 40px;
+    border-bottom: solid 1px gray;
+    width: 75%;
+}
+
+.install-app img, .install-app p {
+    display: inline;
+}
+
+.install-app img {
+    height: 30px;
+}
+
+.install-app p {
+    font-size: 20px;
+}
+
+.profile img, .profile p {
+    display: inline;
+    font-size: 26px;
+    color: white;
+}
+
+.profile {
+    position: relative;
+    padding-top: 10px;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    width: calc(100% - 350px);
+    top: 0;
+    z-index: 2;
+}
+
+header {
+    background-color: transparent;
+    transition: ease 0.3s;
+    grid-area: header;
+    grid-template-columns: 200px 1fr;
+    place-items: center end;
+    height: 100px;
+    padding-right: 100px;
+    margin-left: -60px;
+}
+
+.opaque {
+    background-color: rgba(53, 63, 36, 0.148);
+}
+
+.solidHeader { 
+    background-color: rgb(24, 24, 24);
+}
+
+header > button {
+    width: 400px;
+    height: 70px;
+    border: solid white 2px;
+    border-radius: 35px;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.arrows svg {
+    display: inline;
+    height: 40px;
+    width: 40px;
+    margin: 0 20px;
+}
+
+/* Main */
+main {
+    height: 100%;
+    background-image: linear-gradient(rgb(36, 46, 63), rgb(20, 21, 30) 570px );
+    background-size: 100% 100%;
+    grid-area: main;
+    overflow: scroll;
+    padding-left: 60px;
+    grid-template-rows: repeat(auto-fit, auto);
+    padding-bottom: 70px;
+    height: min-content;
+}
+
+main h2 {
+    margin: 60px 0;
+    color: white;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+main > div + h2 {
+    margin-top: 130px;
+    font-size: 44px;
+}
+
+/* Top Songs - Good Morning */
+.listitem {
+    grid-template-columns: 100px 250px 1px;
+    align-items: center;
+    list-style: none;
+    background-color: rgba(128, 128, 128, 0.102);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 100px;
+}
+
+.list {
+    padding-right: 50px;
+}
+
+.top-songs > .list {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 50px;
+}
+
+.listitem img {
+    width: 100px;
+    display: inline;
+}
+
+.top-songs span {
+    width: 100%;
+    color: white;
+    padding-left: 15px;
+    font-size: 24px;
+}
+
+/* Play Button */
+.listitem button, .recentitem button, .foryou button {
+    transition: all 0.2s ease-in-out;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    justify-self: end;
+    margin-right: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 50%;
+    font-size: 25px;
+    color: black;
+    background-color: rgb(0, 145, 0);
+    box-shadow: black 0px 2px 8px;
+    opacity: 0;
+}
+
+.foryou button {
+    margin-top: 260px;
+}
+
+.foryou:hover button {
+    margin-top: 200px;
+}
+
+.recentitem button {
+    place-self: center;
+    margin: 0;
+    margin-bottom: 110px;
+}
+
+.listitem:hover button, .foryou:hover button, .recentitem:hover button {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.listitem:focus, .listitem:hover {
+    background-color: rgba(128, 128, 128, 0.269);
+}
+
+.listitem button:active, .recentitem button:active, .foryou button:active {
+    margin-right: 10px;
+    margin-top: 15px;
+    font-size: 28px;
+    width: 70px;
+    height: 70px;
+    background-color: rgb(0, 164, 0);
+}
+
+.foryou button:active {
+    margin-top: 190px;
+}
+
+.recentitem button:active {
+    margin-right: 0px;
+    margin-top: 0px; 
+    font-size: 38px;
+    width: 100px;
+    height: 100px;
+    border: white 3px solid;
+    background-color: transparent;
+    color: white;
+}
+
+/* Navigation */
+.genres {
+    grid-template-columns: repeat(auto-fit, 250px);
+    place-items: center;
+    margin: 50px 0px 20px;
+    row-gap: 20px;
+}
+
+.genres a {
+    height: 40px;
+    font-size: 24px;
+    font-weight: 550;
+}
+
+/* Recently Played */
+.recently-played {
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px 10px;
+}
+
+.recentitem, .foryou {
+    grid-template-rows: 250px auto auto;
+    width: 250px;
+}
+
+.recentitem img, .foryou img {
+    height: 250px;
+}
+
+h3 {
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.recentitem p, .madeforyou p {
+    text-align: center;
+    font-size: 22px;
+}
+
+/* Made For You / Something New */
+.madeforyou {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    justify-items: center;
+    gap: 20px 10px;
+}
+
+.madeforyou img {
+    border-radius: 50%;
+}
+
+.foryou {
+    background-color: rgba(128, 128, 128, 0.055);
+    box-sizing: auto;
+    padding: 20px;
+    width: 290px;
+    border-radius: 10px;
+}
+
+.foryou:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.181);
+}
+
+/* Audio Section */
+.audio {
+    grid-area: audio;
+    position: fixed;
+    width: 100vw;
+    height: 120px;
+    bottom: 0;
+    background-color: rgb(51, 51, 51);
+    grid-template-columns: 120px 120px 40px minmax(300px, calc(100% - 480px)) 200px;
+}
+.audio-right svg{
+    height: 30px;
+}
+.audio-right-container {
+    grid-auto-flow: column;
+    place-items: center;
+}
+.audio-album > img {
+    height: 90px;
+    place-self: center;
+}
+.audio-album-name {
+    align-self: center;
+}
+.audio-likes {
+    align-self: center;
+}
+.audio-likes > svg {
+    height: 40px;
+}
+.bottom > input {
+    width: 100%;
+}
+.playbar {
+    place-items: center;
+}
+.top, .bottom {
+    width: 100%;
+    grid-auto-flow: column;
+    place-items: center;
+}
+.playbar svg{
+    height: 40px;
+}
+
+/* After Effects */
+.listitem:hover {
+    cursor: pointer;
+}
+
+.cool-border {
+    position: relative;
+}
+
+.submit {
+    cursor: pointer;
+}
+
+.submit:focus {
+    border: white solid 3px;
+}
+
+.submit:hover {
+    color: gray;
+    background-color: black;
+    border: 3px gray solid;
+}
+
+.submit:active {
+    color: black;
+    background-color: yellow;
+    border: yellow;
+    border-radius: 50%;
+}
+
+.playlist-list li:hover, .playlist-list li:focus {
+    color: white;
+    cursor: pointer;
+}
+
+.playlist-list li:active {
+    color: white;
+    cursor: pointer;
+    font-size: 26px;  
+}
+
+.cool-border:hover::after, .cool-border:focus::after {
+    content: "";
+    position: absolute;
+    background-color: yellow;
+    width: 45%;
+    height: 4px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.small-logo {
+    display: none;
+}
+
+#home:hover, #search:hover, #library:hover, #home:focus, #search:focus, #library:focus {
+    border-left: 4px solid yellow;
+    padding-left: 36px;
+}
+
+#home:hover label, #search:hover label, #library:hover label, #home:focus label, #search:focus label, #library:focus label {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1100px){
+    .container {
+        grid-template:
+            "left  main"   calc(100vh - 100px)
+            "audio audio" 100px /
+            70px   1fr;
+    }
+    .header {
+        width: calc(100% - 70px);
+    }
+    .playlist, nav label, .playlist-list, .install-app > p, .profile p {
+        display: none;
+    }
+
+    .p {
+        padding-left: 13px;
+    }
+
+    .left {
+        grid-template-rows: 100px 180px calc(100vh - 490px) 80px;
+    }
+
+    .install-app {
+        margin: 0;
+        border: none;
+        padding-left: 13px;
+        align-self: end;
+    }
+
+    .main-logo {
+        width: 90px;
+    }
+
+    .main-logo > img {
+        display: none;
+    }
+
+    .small-logo {
+        display: inline;
+        height: 60px;
+        width: 60px;
+        padding-left: 13px;
+    }
+}
