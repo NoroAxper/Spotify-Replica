@@ -65,7 +65,9 @@ nav label {
     overflow: scroll;
     color: white;
 }
-
+.arrowRight {
+    transform: scaleX(-1)
+}
 .playlist-list ul {
     overflow: scroll;
     list-style: none;
@@ -191,8 +193,9 @@ main > div + h2 {
 
 /* Top Songs - Good Morning */
 .listitem {
-    grid-template-columns: 100px 250px 1px;
+    display: flex;
     align-items: center;
+    justify-content: flex-end;
     list-style: none;
     background-color: rgba(128, 128, 128, 0.102);
     border-radius: 15px;
@@ -250,7 +253,7 @@ main > div + h2 {
 .recentitem button {
     place-self: center;
     margin: 0;
-    margin-bottom: 110px;
+    margin-top: 110px;
 }
 
 .listitem:hover button, .foryou:hover button, .recentitem:hover button {
@@ -277,7 +280,7 @@ main > div + h2 {
 
 .recentitem button:active {
     margin-right: 0px;
-    margin-top: 0px; 
+    margin-top: 92px; 
     font-size: 38px;
     width: 100px;
     height: 100px;
@@ -308,7 +311,8 @@ main > div + h2 {
 }
 
 .recentitem, .foryou {
-    grid-template-rows: 250px auto auto;
+    display: flex;
+    flex-direction: column;
     width: 250px;
 }
 
